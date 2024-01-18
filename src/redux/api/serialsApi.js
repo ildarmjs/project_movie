@@ -4,7 +4,7 @@ import { MoviesService } from '../../services/movies.service'
 export const serialApi = createApi({
 	reducerPath: 'serialApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: `${import.meta.env.VITE_BASE_URL}/`
+		baseUrl: `https://44491f98408701ba.mokky.dev/`
 	}),
 	endpoints: builder => ({
 		getSerials: builder.query({
