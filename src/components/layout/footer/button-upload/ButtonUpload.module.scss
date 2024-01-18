@@ -1,0 +1,28 @@
+.button {
+	margin: 0 20px;
+	background: #383838;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 0;
+	width: 205px;
+	border-radius: 8px;
+	@media (max-width: 767px) {
+		margin: 0 0 20px 0;
+	}
+	.info {
+		margin-left: 20px;
+		display: flex;
+		flex-direction: column;
+		color: #cdcdd1;
+
+		.subtitle {
+			text-align: left;
+			margin-bottom: 3px;
+			font-size: 16px;
+		}
+		.title {
+			font-size: 21px;
+		}
+	}
+}

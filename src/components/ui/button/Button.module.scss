@@ -1,0 +1,35 @@
+.buttonSignIn {
+	cursor: pointer;
+	width: 120px;
+	border: 1px solid #fff;
+	padding: 13px 0;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 12px;
+	font-size: 18px;
+	&:hover {
+		color: #7a6fff;
+		border: 1px solid #7a6fff;
+	}
+	@media (max-width: 767px) {
+		width: 100%;
+	}
+}
+.button {
+	cursor: pointer;
+	padding: 13px 0;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 12px;
+	font-size: 18px;
+	width: 240px;
+	background: #7a6fff;
+	&:hover {
+		background: #a43dff;
+	}
+	@media (max-width: 767px) {
+		width: 100%;
+	}
+}

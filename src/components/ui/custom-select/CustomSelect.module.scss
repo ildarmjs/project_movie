@@ -1,0 +1,27 @@
+.wrapper {
+	display: flex;
+	align-items: center;
+	column-gap: 5px;
+	div {
+		font-size: 20px;
+	}
+	.select {
+		cursor: pointer;
+		background: transparent;
+		border: 1.5px solid #7a6fff;
+		border-radius: 12px;
+		padding: 10px 30px;
+		appearance: none;
+
+		font-size: 18px;
+		color: #fff;
+		option {
+			background: #18181b;
+		}
+		// option:focus {
+		// 	background: #18181b;
+		// 	margin-bottom: 10px;
+		// 	border: 1.5px solid #7a6fff;
+		// }
+	}
+}

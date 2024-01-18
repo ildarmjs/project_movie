@@ -1,0 +1,30 @@
+.rating {
+	border-radius: 12px;
+	padding: 20px;
+	background: #5a5a66;
+	// opacity: 0.7;
+	margin-bottom: 30px;
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	.rate {
+		font-size: 28px;
+		color: #fff;
+		display: inline-block;
+		padding: 16px 18px;
+		background: #a43dff;
+		border-radius: 12px;
+	}
+	.content {
+		// flex: 1 1 100%;
+		.subtitle {
+			font-size: 20px;
+			margin-bottom: 10px;
+		}
+		.text {
+			cursor: pointer;
+			font-size: 18px;
+			text-decoration: underline;
+		}
+	}
+}

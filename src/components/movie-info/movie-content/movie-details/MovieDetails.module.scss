@@ -1,0 +1,26 @@
+.details {
+	border-radius: 12px;
+	background: #5a5a66;
+	.items {
+		padding: 20px;
+		display: flex;
+		column-gap: 40px;
+		row-gap: 20px;
+		flex-wrap: wrap;
+		// .item {
+		// 	.itemTitle {
+		// 		color: #cacace;
+		// 		font-size: 20px;
+		// 		margin-bottom: 10px;
+		// 	}
+
+		// 	.itemText {
+		// 		display: inline-block;
+		// 		font-size: 22px;
+		// 		> span {
+		// 			margin: 0 10px 0 0;
+		// 		}
+		// 	}
+		// }
+	}
+}

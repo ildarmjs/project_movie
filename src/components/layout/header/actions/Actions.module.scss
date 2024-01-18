@@ -1,0 +1,17 @@
+.actions {
+	display: flex;
+	align-items: center;
+	gap: 30px;
+
+	.search {
+		display: flex;
+		align-items: center;
+		input {
+			font-size: 20px;
+			color: #fff;
+			background: transparent;
+			outline: none;
+			border-bottom: 1px solid #7a6fff;
+		}
+	}
+}

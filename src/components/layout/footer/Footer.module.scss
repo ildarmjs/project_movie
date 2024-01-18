@@ -1,0 +1,32 @@
+.footer {
+	padding: 50px 0;
+	background: #000;
+	.nav {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 40px;
+		flex-wrap: wrap;
+		@media (max-width: 767px) {
+			display: block;
+		}
+	}
+	.btns {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 100px;
+		flex-wrap: wrap;
+		@media (max-width: 767px) {
+			display: block;
+		}
+	}
+	.social {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+		@media (max-width: 767px) {
+			justify-content: start;
+		}
+	}
+}

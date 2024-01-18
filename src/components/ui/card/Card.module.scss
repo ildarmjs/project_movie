@@ -1,0 +1,79 @@
+.card {
+	flex: 0 1 25%;
+	color: #fff;
+	display: block;
+	margin: 0 10px;
+	// @media (max-width: 767px) {
+	// 	flex: 0 1 33.333%;
+	// }
+	cursor: pointer;
+	.poster {
+		position: relative;
+		margin-bottom: 20px;
+		border-radius: 12px;
+		background: #000;
+		overflow: hidden;
+		padding: 0 0 157% 0;
+		overflow: hidden;
+		// height: 400px;
+		// @media (max-width: 767px) {
+		// 	position: static;
+		// 	padding: 0;
+		// 	height: 300px;
+		// }
+		img {
+			position: absolute;
+			left: 0;
+			top: 0;
+			opacity: 0.9;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 12px;
+			transform: scale(1);
+			transition: all 0.4s ease 0s;
+			&:hover {
+				transition: all 0.4s ease 0s;
+				transform: scale(1.1);
+				opacity: 0.4;
+			}
+			// @media (max-width: 767px) {
+			// 	position: static;
+			// }
+		}
+		.rating {
+			background: #a43dff;
+			border-radius: 12px;
+			padding: 5px 10px;
+			position: absolute;
+			left: 20px;
+			top: 20px;
+			font-size: 24px;
+		}
+	}
+	.title {
+		font-size: 28px;
+		margin-bottom: 8px;
+		&:hover {
+			color: #a43dff;
+		}
+		// @media (max-width: 992px) {
+		// 	font-size: 21px;
+		// }
+	}
+	.price {
+		font-size: 20px;
+		color: #aaaaac;
+		margin-bottom: 20px;
+		// @media (max-width: 992px) {
+		// 	font-size: 18px;
+		// }
+	}
+}
+.loader {
+	flex: 0 1 25%;
+}
+.skeleton_loader {
+	border-radius: 10px;
+	height: 470px;
+}
