@@ -7,7 +7,7 @@ export const authUser = createAsyncThunk(
 		try {
 			const { user, params } = payload
 			const res = await axios.post(
-				`https://44491f98408701ba.mokky.dev/${params}`,
+				`${import.meta.env.VITE_BASE_URL}/${params}`,
 				user
 			)
 

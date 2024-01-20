@@ -33,7 +33,7 @@ const Register = () => {
 		}
 		// console.log(newUser)
 		axios
-			.post(`https://44491f98408701ba.mokky.dev/register`, newUser)
+			.post(`${import.meta.env.VITE_BASE_URL}/register`, newUser)
 			.then(({ data }) => {
 				setUser({ token: data.token, ...data.data })
 				localStorage.setItem(

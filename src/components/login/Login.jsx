@@ -28,7 +28,7 @@ const Login = () => {
 			password: data.password
 		}
 		axios
-			.post(`https://44491f98408701ba.mokky.dev/auth`, newUser)
+			.post(`${import.meta.env.VITE_BASE_URL}/auth`, newUser)
 			.then(({ data }) => {
 				setUser({ token: data.token, ...data.data })
 				localStorage.setItem(

@@ -2,21 +2,19 @@ import axios from 'axios'
 
 export const MoviesService = {
 	async getAll(category) {
-		return await axios.get(`https://44491f98408701ba.mokky.dev/${category}`)
+		return await axios.get(`${import.meta.env.VITE_BASE_URL}/${category}`)
 	},
 	async getOneMovie(id, category) {
-		return await axios.get(
-			`https://44491f98408701ba.mokky.dev/${category}/${id}`
-		)
+		return await axios.get(`${import.meta.env.VITE_BASE_URL}/${category}/${id}`)
 	},
 	async getMovieSimilar(slug, category) {
 		return await axios.get(
-			`https://44491f98408701ba.mokky.dev/${category}?genres.slug=${slug}`
+			`${import.meta.env.VITE_BASE_URL}/${category}?genres.slug=${slug}`
 		)
 	},
 	async searchMovie(title) {
 		return await axios.get(
-			`https://44491f98408701ba.mokky.dev/movies?title=*${title}`
+			`${import.meta.env.VITE_BASE_URL}/movies?title=*${title}`
 		)
 	},
 	async getSerialsPaginationAndSorting(
@@ -26,7 +24,9 @@ export const MoviesService = {
 		limit = 4
 	) {
 		return await axios.get(
-			`https://44491f98408701ba.mokky.dev/${category}?page=${page}&limit=${limit}&sortBy=${sort}`
+			`${
+				import.meta.env.VITE_BASE_URL
+			}/${category}?page=${page}&limit=${limit}&sortBy=${sort}`
 		)
 	}
 }
