@@ -14,7 +14,7 @@ const Serials = () => {
 
 			{/* <div className={styles.items}> */}
 			<CarouselCustom>
-				{data?.items.slice(0, 5).map(item => (
+				{data?.slice(0, 5).map(item => (
 					<Card item={item} key={item.id} isLoading={isLoading} type='serial' />
 				))}
 			</CarouselCustom>
