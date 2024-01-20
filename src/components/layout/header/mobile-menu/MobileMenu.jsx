@@ -9,9 +9,16 @@ import { Link } from 'react-router-dom'
 
 const MobileMenu = () => {
 	const [open, setOpen] = useState(false)
-	const { user } = useContext(AuthContext)
+	const { user, setUser } = useContext(AuthContext)
 	const toggleMenu = () => {
 		setOpen(prev => !prev)
+	}
+	const handleLogOut = () => {
+		setUser({
+			email: ''
+		})
+		localStorage.removeItem('user')
+		// navigate('/register')
 	}
 	return (
 		<div className={styles.menu}>
