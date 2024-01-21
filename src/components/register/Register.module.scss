@@ -27,6 +27,7 @@
 				margin-bottom: 30px;
 				@media (max-width: 497px) {
 					width: 300px;
+					font-size: 18px;
 				}
 			}
 			.password {
@@ -36,6 +37,16 @@
 					position: absolute;
 					right: 0;
 					top: 10%;
+					@media (max-width: 497px) {
+						top: 5px;
+						right: 5px;
+					}
+					.eye {
+						font-size: 24px;
+						@media (max-width: 497px) {
+							font-size: 18px;
+						}
+					}
 				}
 			}
 			.button {

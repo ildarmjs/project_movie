@@ -100,13 +100,13 @@ const Register = () => {
 								<div className={styles.status}>
 									{status ? (
 										<FaEyeSlash
-											size={24}
+											className={styles.eye}
 											cursor='pointer'
 											onClick={() => setStatus(false)}
 										/>
 									) : (
 										<FaEye
-											size={24}
+											className={styles.eye}
 											cursor='pointer'
 											onClick={() => setStatus(true)}
 										/>
