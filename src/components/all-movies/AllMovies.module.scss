@@ -23,9 +23,9 @@
 		grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
 		gap: 30px;
 		margin-bottom: 100px;
-		// @media (max-width: 992px) {
-		// 	grid-template-columns: repeat(3, 1fr);
-		// }
+		@media (min-width: 668px) {
+			grid-template-columns: repeat(auto-fit, minmax(100px, 300px));
+		}
 		// @media (max-width: 767px) {
 		// 	grid-template-columns: repeat(2, 1fr);
 		// }
