@@ -4,7 +4,15 @@ import SkeletonLoader from '../skeleton-loader/SkeletonLoader'
 import { Link } from 'react-router-dom'
 import classnames from 'classnames'
 
-const Card = ({ item, isLoading, type, className }) => {
+const Card = ({
+	item,
+	isLoading,
+	type,
+	serialCardStyle,
+	serialTitleStyle,
+	serialPriceStyle,
+	serialRatingStyle
+}) => {
 	return isLoading ? (
 		<div className={styles.loader}>
 			<SkeletonLoader count={1} className={styles.skeleton_loader} />
@@ -12,14 +20,20 @@ const Card = ({ item, isLoading, type, className }) => {
 	) : (
 		<Link
 			to={`/${type}/${item.slug}/${item.id}`}
-			className={classnames(styles.card, className)}
+			className={classnames(styles.card, serialCardStyle)}
 		>
 			<div className={styles.poster}>
 				<img src={item.poster} alt={item.title} />
-				<div className={styles.rating}>{item.rating}</div>
+				<div className={classnames(styles.rating, serialRatingStyle)}>
+					{item.rating}
+				</div>
 			</div>
-			<h4 className={styles.title}>{item.title}</h4>
-			<div className={styles.price}>{item.price}</div>
+			<h4 className={classnames(styles.title, serialTitleStyle)}>
+				{item.title}
+			</h4>
+			<div className={classnames(styles.price, serialPriceStyle)}>
+				{item.price}
+			</div>
 		</Link>
 	)
 }

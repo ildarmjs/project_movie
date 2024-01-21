@@ -50,7 +50,10 @@ const AllMovies = () => {
 						<div className={styles.items}>
 							{data?.items.map(item => (
 								<Card
-									className={styles.serialCard}
+									serialRatingStyle={styles.ratingItem}
+									serialTitleStyle={styles.titleItem}
+									serialPriceStyle={styles.priceItem}
+									serialCardStyle={styles.serialCard}
 									item={item}
 									key={item.id}
 									isLoading={isLoading}
