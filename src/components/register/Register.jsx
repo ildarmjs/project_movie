@@ -6,11 +6,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { AuthContext } from '../../utils/AuthContext'
 import { useForm } from 'react-hook-form'
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
 
 const Register = () => {
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
-	const [name, setName] = useState('')
+	const [status, setStatus] = useState(false)
 	const { user, setUser } = useContext(AuthContext)
 	const {
 		register,
@@ -23,15 +22,12 @@ const Register = () => {
 
 	const navigate = useNavigate()
 
-	const submitHandler = (data, e) => {
-		// e.preventDefault()
-
+	const submitHandler = data => {
 		let newUser = {
 			name: data.name,
 			email: data.email,
 			password: data.password
 		}
-		// console.log(newUser)
 		axios
 			.post(`${import.meta.env.VITE_BASE_URL}/register`, newUser)
 			.then(({ data }) => {
@@ -49,7 +45,6 @@ const Register = () => {
 	return (
 		<Layout>
 			<div className={styles.body}>
-				{/* <div className={styles.test}></div> */}
 				<Container>
 					<div className={styles.wrapper}>
 						<h3 className={styles.title}>Register page</h3>
@@ -58,8 +53,6 @@ const Register = () => {
 							onSubmit={handleSubmit(submitHandler)}
 						>
 							<input
-								// value={name}
-								// onChange={e => setName(e.target.value)}
 								type='text'
 								placeholder='Please to enter your name'
 								{...register('name', {
@@ -70,12 +63,12 @@ const Register = () => {
 									}
 								})}
 							/>
+
 							{errors.name && (
 								<span className={styles.error}>{errors.name.message}</span>
 							)}
+
 							<input
-								// value={email}
-								// onChange={e => setEmail(e.target.value)}
 								className={styles.fieldEmail}
 								type='email'
 								placeholder='Please to enter your email'
@@ -87,23 +80,40 @@ const Register = () => {
 									}
 								})}
 							/>
+
 							{errors.email && (
 								<span className={styles.error}>{errors.email.message}</span>
 							)}
-							<input
-								// value={password}
-								// onChange={e => setPassword(e.target.value)}
-								className={styles.fieldPassword}
-								type='password'
-								placeholder='Please to enter your password'
-								{...register('password', {
-									required: 'Вы не ввели пароль',
-									minLength: {
-										value: 6,
-										message: 'Пароль должен состоять минимум из 6 символов'
-									}
-								})}
-							/>
+							<div className={styles.password}>
+								<input
+									className={styles.fieldPassword}
+									type={status ? 'text' : 'password'}
+									placeholder='Please to enter your password'
+									{...register('password', {
+										required: 'Вы не ввели пароль',
+										minLength: {
+											value: 6,
+											message: 'Пароль должен состоять минимум из 6 символов'
+										}
+									})}
+								/>
+								<div className={styles.status}>
+									{status ? (
+										<FaEyeSlash
+											size={24}
+											cursor='pointer'
+											onClick={() => setStatus(false)}
+										/>
+									) : (
+										<FaEye
+											size={24}
+											cursor='pointer'
+											onClick={() => setStatus(true)}
+										/>
+									)}
+								</div>
+							</div>
+
 							{errors.password && (
 								<span className={styles.error}>{errors.password.message}</span>
 							)}
