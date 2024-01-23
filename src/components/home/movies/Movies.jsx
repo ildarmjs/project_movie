@@ -13,7 +13,7 @@ const Movies = () => {
 			<Title title='We recommend movies' />
 
 			{/* <div className={styles.items}> */}
-			<CarouselCustom>
+			<CarouselCustom slidesToShow={4} slidesToShowBreakPoints={3}>
 				{data?.slice(0, 5).map(item => (
 					<Card item={item} key={item.id} isLoading={isLoading} type='movie' />
 				))}

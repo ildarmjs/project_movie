@@ -1,14 +1,38 @@
-.actor {
-	// width: 100%;
-	overflow: hidden;
-	img {
-		border-radius: 12px;
-		object-fit: cover;
-		width: 200px;
-		height: 300px;
-		margin-bottom: 10px;
+.item {
+	.actor {
+		margin: 0 10px 20px 10px;
+		position: relative;
+		padding: 0 0 157% 0;
+		overflow: hidden;
+		// height: 200px;
+
+		img {
+			position: absolute;
+			left: 0;
+			top: 0;
+			opacity: 0.9;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 12px;
+			// border-radius: 12px;
+			// object-fit: cover;
+			// width: 200px;
+			// height: 300px;
+			// margin-bottom: 10px;
+		}
 	}
 	.name {
+		// width: 200px;
+		text-align: center;
 		font-size: 22px;
+		@media (max-width: 767px) {
+			font-size: 20px;
+			width: auto;
+		}
+		@media (max-width: 479px) {
+			width: auto;
+			font-size: 18px;
+		}
 	}
 }

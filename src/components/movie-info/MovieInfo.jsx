@@ -10,6 +10,7 @@ import Card from '../ui/card/Card'
 import Actor from '../ui/actor/Actor'
 import InfoSubscribe from '../home/info-subscribe/InfoSubscribe'
 import { useGetMovieByIdQuery } from '../../redux/api/movieApi'
+import CarouselCustom from '../ui/carousel-custom/CarouselCustom'
 
 const MovieInfo = ({ movieId, category, type }) => {
 	const [item, setItem] = useState()
@@ -64,9 +65,14 @@ const MovieInfo = ({ movieId, category, type }) => {
 								<div className={styles.actors}>
 									<Title title='Actors' />
 									<div className={styles.actorsBody}>
+										{/* <CarouselCustom
+											slidesToShow={2}
+											slidesToShowBreakPoints={2}
+										> */}
 										{item.actors.map(actor => (
 											<Actor item={actor} key={actor.id} />
 										))}
+										{/* </CarouselCustom> */}
 									</div>
 								</div>
 								<div className={styles.similar}>
