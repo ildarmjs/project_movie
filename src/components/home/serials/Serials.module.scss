@@ -1,5 +1,8 @@
 .movies {
 	padding-bottom: 100px;
+	@media (max-width: 767px) {
+		padding: 0;
+	}
 	.items {
 		display: flex;
 		// flex-wrap: wrap;
