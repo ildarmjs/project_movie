@@ -14,4 +14,13 @@
 			border-bottom: 1px solid #7a6fff;
 		}
 	}
+	.btnLogout {
+		display: flex;
+		align-items: center;
+		column-gap: 20px;
+		.profileIcon {
+			cursor: pointer;
+			font-size: 32px;
+		}
+	}
 }

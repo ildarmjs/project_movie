@@ -6,6 +6,7 @@ import LoginPage from '../pages/LoginPage'
 import AllSerialsPage from '../pages/AllSerialsPage'
 import AllMoviesPage from '../pages/AllMoviesPage'
 import AllCartoonsPage from '../pages/AllCartoonsPage'
+import AccountPage from '../pages/AccountPage'
 
 function App() {
 	return (
@@ -17,6 +18,7 @@ function App() {
 				<Route path='/serials' element={<AllSerialsPage />} />
 				<Route path='/movies' element={<AllMoviesPage />} />
 				<Route path='/cartoons' element={<AllCartoonsPage />} />
+				<Route path='/account' element={<AccountPage />} />
 			</Routes>
 		</>
 	)

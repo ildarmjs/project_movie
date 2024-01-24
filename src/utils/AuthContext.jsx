@@ -5,8 +5,10 @@ export const AuthContext = createContext()
 
 const Context = ({ children }) => {
 	const [user, setUser] = useState({
-		email: ''
+		email: '',
+		image: ''
 	})
+
 	useEffect(() => {
 		if (JSON.parse(localStorage.getItem('user')) !== null) {
 			setUser(JSON.parse(localStorage.getItem('user')))

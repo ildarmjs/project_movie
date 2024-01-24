@@ -25,6 +25,7 @@ const Register = () => {
 	const submitHandler = data => {
 		let newUser = {
 			name: data.name,
+			tel: data.tel,
 			email: data.email,
 			password: data.password
 		}
@@ -66,6 +67,22 @@ const Register = () => {
 
 							{errors.name && (
 								<span className={styles.error}>{errors.name.message}</span>
+							)}
+
+							<input
+								type='tel'
+								placeholder='+ 7 999 123 12 34'
+								{...register('tel', {
+									required: 'Вы не ввели номер телефона',
+									pattern: {
+										value:
+											/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/g,
+										message: 'Номер телефона введен некоректно'
+									}
+								})}
+							/>
+							{errors.tel && (
+								<span className={styles.error}>{errors.tel.message}</span>
 							)}
 
 							<input

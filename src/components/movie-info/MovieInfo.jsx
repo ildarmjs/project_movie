@@ -65,14 +65,9 @@ const MovieInfo = ({ movieId, category, type }) => {
 								<div className={styles.actors}>
 									<Title title='Actors' />
 									<div className={styles.actorsBody}>
-										{/* <CarouselCustom
-											slidesToShow={2}
-											slidesToShowBreakPoints={2}
-										> */}
 										{item.actors.map(actor => (
 											<Actor item={actor} key={actor.id} />
 										))}
-										{/* </CarouselCustom> */}
 									</div>
 								</div>
 								<div className={styles.similar}>

@@ -63,6 +63,10 @@
 				&:hover {
 					background: #7a6fff;
 				}
+				&:disabled {
+					background: #7a6fff;
+					opacity: 0.3;
+				}
 			}
 		}
 		.text {
