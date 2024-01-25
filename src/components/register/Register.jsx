@@ -27,7 +27,8 @@ const Register = () => {
 			name: data.name,
 			tel: data.tel,
 			email: data.email,
-			password: data.password
+			password: data.password,
+			favoritesFilm: []
 		}
 		axios
 			.post(`${import.meta.env.VITE_BASE_URL}/register`, newUser)

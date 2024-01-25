@@ -7,7 +7,7 @@ import { MdAccountCircle } from 'react-icons/md'
 import axios from 'axios'
 const Account = () => {
 	const { user, setUser } = useContext(AuthContext)
-	const [file, setFile] = useState({})
+	const [file, setFile] = useState()
 	const [progress, setProgress] = useState({ started: false, pc: 0 })
 	const [message, setMessage] = useState(null)
 	const handleUploadFile = () => {
@@ -21,7 +21,7 @@ const Account = () => {
 		setMessage('Uploading...')
 		setProgress(prev => ({ ...prev, started: true }))
 		axios
-			.post('https://44491f98408701ba.mokky.dev/uploads', fd, {
+			.post(`${import.meta.env.VITE_BASE_URL}/uploads`, fd, {
 				onUploadProgress: progressEvent => {
 					setProgress(prev => ({ ...prev, pc: progressEvent.progress * 100 }))
 				},
@@ -31,50 +31,59 @@ const Account = () => {
 			})
 			.then(res => {
 				setMessage('Uploading successful')
-				res.data
+				setFile(res.data)
 			})
 			.catch(err => {
 				setMessage('Uploading failed')
 				console.log(err)
 			})
+
+		axios
+			.patch(`${import.meta.env.VITE_BASE_URL}/users/${user.id}`, user.image)
+			.then(({ data }) => {
+				setUser(data)
+				return console.log(data)
+			})
 	}
 
-	return (
-		<Layout>
-			<div className={styles.body}>
-				<Container>
-					<h3 className={styles.title}>My account</h3>
-					<div className={styles.info}>
-						<div className={styles.avatar}>
-							<MdAccountCircle size={200} />
-							<div className={styles.inputFile}>
-								<div>
-									<input
-										type='file'
-										onChange={e => setFile(e.target.files[0])}
-									/>
-								</div>
+	if (user)
+		return (
+			<Layout>
+				<div className={styles.body}>
+					<Container>
+						<h3 className={styles.title}>My account</h3>
+						<div className={styles.info}>
+							<div className={styles.avatar}>
+								{/* <img src={user.image} alt='' /> */}
+								<MdAccountCircle size={200} />
+								{/* <div className={styles.inputFile}>
+									<div>
+										<input
+											type='file'
+											onChange={e => setFile(e.target.files[0])}
+										/>
+									</div>
 
-								<button onClick={handleUploadFile}>Download photo</button>
-								{message && <span>{message}</span>}
+									<button onClick={handleUploadFile}>Download photo</button>
+									{message && <span>{message}</span>}
+								</div> */}
+							</div>
+							<div className={styles.details}>
+								<div>
+									<span>Email:</span> {user.email}
+								</div>
+								<div>
+									<span>Name:</span> {user.name}
+								</div>
+								<div>
+									<span>Phone:</span> {user.tel}
+								</div>
 							</div>
 						</div>
-						<div className={styles.details}>
-							<div>
-								<span>Email:</span> {user.email}
-							</div>
-							<div>
-								<span>Name:</span> {user.name}
-							</div>
-							<div>
-								<span>Phone:</span> {user.tel}
-							</div>
-						</div>
-					</div>
-				</Container>
-			</div>
-		</Layout>
-	)
+					</Container>
+				</div>
+			</Layout>
+		)
 }
 
 export default Account

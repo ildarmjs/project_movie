@@ -5,8 +5,7 @@ export const AuthContext = createContext()
 
 const Context = ({ children }) => {
 	const [user, setUser] = useState({
-		email: '',
-		image: ''
+		email: ''
 	})
 
 	useEffect(() => {
