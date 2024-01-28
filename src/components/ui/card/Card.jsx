@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import styles from './Card.module.scss'
 import SkeletonLoader from '../skeleton-loader/SkeletonLoader'
 import { Link } from 'react-router-dom'
 import classnames from 'classnames'
+import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+	removeFavorites,
+	toggleFavorites
+} from '../../../redux/favoritesSlice/favoritesSlice'
+import axios from 'axios'
+import { AuthContext } from '../../../utils/AuthContext'
 
 const Card = ({
 	item,
@@ -13,19 +21,50 @@ const Card = ({
 	serialPriceStyle,
 	serialRatingStyle
 }) => {
+	const { user, setUser } = useContext(AuthContext)
+	const dispatch = useDispatch()
+	const favorites = useSelector(state => state.favorites)
+	const isExists = favorites.some(favorite => favorite.id === item.id)
+	const handleToggleFavorites = () => {
+		if (!user.email.length) {
+			alert('Необходимо войти в аккаунт или зарегестрироваться!')
+		} else {
+			if (isExists) {
+				dispatch(removeFavorites(item.id))
+			} else {
+				dispatch(toggleFavorites(item))
+			}
+		}
+
+		// if (favorites.filter(film => film.id === item.id)) {
+		// 	setUser(prev => ({ ...prev, favoritesFilm: [...favorites] }))
+		// }
+		// axios.patch(`${import.meta.env.VITE_BASE_URL}/users/${user.id}`, {
+		// 	favoritesFilm: [...favorites]
+		// })
+		// axios.delete(`${import.meta.env.VITE_BASE_URL}/users/${user.id}`, {
+		// 	favoritesFilm: [...favorites].filter(film => film.id !== item.id)
+		// })
+	}
+	useEffect(() => {
+		setUser(prev => ({ ...prev, favoritesFilm: [...favorites] }))
+	}, [favorites])
 	return isLoading ? (
 		<div className={styles.loader}>
 			<SkeletonLoader count={1} className={styles.skeleton_loader} />
 		</div>
 	) : (
-		<Link
-			to={`/${type}/${item.slug}/${item.id}`}
-			className={classnames(styles.card, serialCardStyle)}
-		>
+		<div className={classnames(styles.card, serialCardStyle)}>
 			<div className={styles.poster}>
-				<img src={item.poster} alt={item.title} />
+				<Link to={`/${type}/${item.slug}/${item.id}`}>
+					<img src={item.poster} alt={item.title} />
+				</Link>
+
 				<div className={classnames(styles.rating, serialRatingStyle)}>
 					{item.rating}
+				</div>
+				<div className={styles.favorites} onClick={handleToggleFavorites}>
+					{isExists ? <IoMdHeart size={24} /> : <IoMdHeartEmpty size={24} />}
 				</div>
 			</div>
 			<h4 className={classnames(styles.title, serialTitleStyle)}>
@@ -34,7 +73,7 @@ const Card = ({
 			<div className={classnames(styles.price, serialPriceStyle)}>
 				{item.price}
 			</div>
-		</Link>
+		</div>
 	)
 }
 

@@ -1,23 +1,31 @@
 .search {
+	color: #fff;
 	display: flex;
 	align-items: center;
 	position: relative;
-
-	input {
-		font-size: 20px;
-		color: #fff;
-		background: transparent;
-		outline: none;
-		border-bottom: 1px solid #7a6fff;
-		@media (max-width: 497px) {
-			position: absolute;
-			right: -50px;
-			top: 50px;
-			width: 275px;
-		}
+	span {
+		position: absolute;
+		right: 40%;
+		top: 30%;
+		color: #7a6fff;
+		font-size: 18px;
+		font-weight: bold;
 	}
-	@media (max-width: 767px) {
-		position: relative;
-		right: 20px;
-	}
+	// input {
+	// 	font-size: 20px;
+	// 	color: #fff;
+	// 	background: transparent;
+	// 	outline: none;
+	// 	border-bottom: 1px solid #7a6fff;
+	// 	@media (max-width: 497px) {
+	// 		position: absolute;
+	// 		right: -50px;
+	// 		top: 50px;
+	// 		width: 275px;
+	// 	}
+	// }
+	// @media (max-width: 767px) {
+	// 	position: relative;
+	// 	right: 20px;
+	// }
 }

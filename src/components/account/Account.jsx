@@ -5,11 +5,14 @@ import styles from './Account.module.scss'
 import { AuthContext } from '../../utils/AuthContext'
 import { MdAccountCircle } from 'react-icons/md'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 const Account = () => {
 	const { user, setUser } = useContext(AuthContext)
 	const [file, setFile] = useState()
 	const [progress, setProgress] = useState({ started: false, pc: 0 })
 	const [message, setMessage] = useState(null)
+	const favorites = useSelector(state => state.favorites)
+
 	const handleUploadFile = () => {
 		if (!file) {
 			setMessage('No file selected!')
@@ -77,6 +80,10 @@ const Account = () => {
 								</div>
 								<div>
 									<span>Phone:</span> {user.tel}
+								</div>
+								<div>
+									<span>Favorite Film: </span>
+									{user.favoritesFilm?.length}
 								</div>
 							</div>
 						</div>

@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from './Search.module.scss'
 import { FaSearch } from 'react-icons/fa'
 import { MoviesService } from '../../../../../services/movies.service'
-
+import { IoMdHeart } from 'react-icons/io'
+import { AuthContext } from '../../../../../utils/AuthContext'
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 const Search = () => {
-	const [open, setOpen] = useState(false)
-	const [title, setTitle] = useState('')
+	const favorites = useSelector(state => state.favorites)
+	const quantity = favorites.length
+	const { user } = useContext(AuthContext)
 
-	// useEffect(() => {
-	// 	const searchTitleMovie = async () => {
-	// 		const { data } = await MoviesService.searchMovie(title)
-	// 		console.log(data)
-	// 	}
-	// 	searchTitleMovie()
-	// }, [])
 	return (
-		<div className={styles.search}>
-			{open && (
+		<Link to='/favorites' className={styles.search}>
+			<IoMdHeart size={45} />
+			<span>{quantity ? quantity : ''}</span>
+
+			{/* {open && (
 				<input
 					type='text'
 					placeholder='Search movie'
@@ -28,8 +28,8 @@ const Search = () => {
 				size={28}
 				onClick={() => setOpen(prev => !prev)}
 				cursor='pointer'
-			/>
-		</div>
+			/> */}
+		</Link>
 	)
 }
 

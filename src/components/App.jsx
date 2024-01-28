@@ -7,6 +7,7 @@ import AllSerialsPage from '../pages/AllSerialsPage'
 import AllMoviesPage from '../pages/AllMoviesPage'
 import AllCartoonsPage from '../pages/AllCartoonsPage'
 import AccountPage from '../pages/AccountPage'
+import FavoritesPage from '../pages/FavoritesPage'
 
 function App() {
 	return (
@@ -19,6 +20,7 @@ function App() {
 				<Route path='/movies' element={<AllMoviesPage />} />
 				<Route path='/cartoons' element={<AllCartoonsPage />} />
 				<Route path='/account' element={<AccountPage />} />
+				<Route path='/favorites' element={<FavoritesPage />} />
 			</Routes>
 		</>
 	)
