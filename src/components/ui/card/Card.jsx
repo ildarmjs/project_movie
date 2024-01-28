@@ -35,19 +35,17 @@ const Card = ({
 				dispatch(toggleFavorites(item))
 			}
 		}
-
-		// if (favorites.filter(film => film.id === item.id)) {
-		// 	setUser(prev => ({ ...prev, favoritesFilm: [...favorites] }))
-		// }
-		// axios.patch(`${import.meta.env.VITE_BASE_URL}/users/${user.id}`, {
-		// 	favoritesFilm: [...favorites]
-		// })
-		// axios.delete(`${import.meta.env.VITE_BASE_URL}/users/${user.id}`, {
-		// 	favoritesFilm: [...favorites].filter(film => film.id !== item.id)
-		// })
 	}
 	useEffect(() => {
-		setUser(prev => ({ ...prev, favoritesFilm: [...favorites] }))
+		// setUser(prev => ({ ...prev, favoritesFilm: [...favorites] }))
+		axios
+			.patch(`${import.meta.env.VITE_BASE_URL}/users/${user.id}`, {
+				favoritesFilm: [...favorites]
+			})
+			.then(({ data }) => {
+				setUser(data)
+				localStorage.setItem('user', JSON.stringify(data))
+			})
 	}, [favorites])
 	return isLoading ? (
 		<div className={styles.loader}>
@@ -63,9 +61,15 @@ const Card = ({
 				<div className={classnames(styles.rating, serialRatingStyle)}>
 					{item.rating}
 				</div>
-				<div className={styles.favorites} onClick={handleToggleFavorites}>
-					{isExists ? <IoMdHeart size={24} /> : <IoMdHeartEmpty size={24} />}
-				</div>
+				{user.email.length ? (
+					<div className={styles.favorites} onClick={handleToggleFavorites}>
+						{isExists ? <IoMdHeart size={24} /> : <IoMdHeartEmpty size={24} />}
+					</div>
+				) : (
+					<div className={styles.favorites} onClick={handleToggleFavorites}>
+						<IoMdHeartEmpty size={24} />
+					</div>
+				)}
 			</div>
 			<h4 className={classnames(styles.title, serialTitleStyle)}>
 				{item.title}

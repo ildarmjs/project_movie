@@ -6,13 +6,19 @@ import { AuthContext } from '../../utils/AuthContext'
 import { MdAccountCircle } from 'react-icons/md'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 const Account = () => {
 	const { user, setUser } = useContext(AuthContext)
 	const [file, setFile] = useState()
 	const [progress, setProgress] = useState({ started: false, pc: 0 })
 	const [message, setMessage] = useState(null)
 	const favorites = useSelector(state => state.favorites)
-
+	const navigate = useNavigate()
+	useEffect(() => {
+		if (!user.email.length) {
+			navigate('/')
+		}
+	}, [user])
 	const handleUploadFile = () => {
 		if (!file) {
 			setMessage('No file selected!')

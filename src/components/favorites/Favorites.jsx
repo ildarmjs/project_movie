@@ -8,7 +8,7 @@ import { useContext } from 'react'
 import { AuthContext } from '../../utils/AuthContext'
 
 const Favorites = () => {
-	const { setUser } = useContext(AuthContext)
+	const { user, setUser } = useContext(AuthContext)
 	const favorites = useSelector(state => state.favorites)
 	console.log(favorites)
 
@@ -18,11 +18,15 @@ const Favorites = () => {
 			<div className={styles.favorites}>
 				<Container>
 					<h4>Favorites movies</h4>
-					<div className={styles.items}>
-						{favorites.map(item => (
-							<Card item={item} type={item.type} key={item.id} />
-						))}
-					</div>
+					{user.email.length ? (
+						<div className={styles.items}>
+							{favorites.map(item => (
+								<Card item={item} type={item.type} key={item.id} />
+							))}
+						</div>
+					) : (
+						<div>ыфв</div>
+					)}
 				</Container>
 			</div>
 		</Layout>

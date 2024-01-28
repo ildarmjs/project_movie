@@ -13,7 +13,7 @@ const Search = () => {
 
 	return (
 		<Link to='/favorites' className={styles.search}>
-			<IoMdHeart size={45} />
+			<IoMdHeart  className={styles.icon}/>
 			<span>{quantity ? quantity : ''}</span>
 
 			{/* {open && (
