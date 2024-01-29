@@ -7,6 +7,7 @@ import { FaSearch } from 'react-icons/fa'
 import { AuthContext } from '../../../../utils/AuthContext'
 import { Link } from 'react-router-dom'
 import Search from '../actions/search/Search'
+import Favorite from '../actions/favorite/Favorite'
 
 const MobileMenu = () => {
 	const [open, setOpen] = useState(false)
@@ -27,6 +28,7 @@ const MobileMenu = () => {
 			<Logo />
 			<div className={styles.right}>
 				<Search />
+				<Favorite />
 				{open ? (
 					<MdClose size={30} cursor='pointer' onClick={toggleMenu} />
 				) : (

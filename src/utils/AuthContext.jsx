@@ -5,10 +5,9 @@ import { useSelector } from 'react-redux'
 export const AuthContext = createContext()
 
 const Context = ({ children }) => {
-	const favorites = useSelector(state => state.favorites)
+	// const favorites = useSelector(state => state.favorites)
 	const [user, setUser] = useState({
-		email: '',
-		favoritesFilm: favorites
+		email: ''
 	})
 
 	useEffect(() => {

@@ -2,34 +2,73 @@ import React, { useContext, useEffect, useState } from 'react'
 import styles from './Search.module.scss'
 import { FaSearch } from 'react-icons/fa'
 import { MoviesService } from '../../../../../services/movies.service'
-import { IoMdHeart } from 'react-icons/io'
+
 import { AuthContext } from '../../../../../utils/AuthContext'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+
 const Search = () => {
-	const favorites = useSelector(state => state.favorites)
-	const quantity = favorites.length
-	const { user } = useContext(AuthContext)
+	const [open, setOpen] = useState(false)
+	const [title, setTitle] = useState(null)
+	const [items, setItems] = useState(null)
+	const { id } = useParams()
+
+	useEffect(() => {
+		const searchTitleMovie = async () => {
+			const { data } = await MoviesService.searchMovie(title)
+			setItems(data)
+			console.log(data)
+		}
+
+		searchTitleMovie()
+	}, [title, id])
+
+	const handleChange = e => {
+		setTitle(e.target.value)
+	}
+	const itemClickHandler = () => {
+		setOpen(!open)
+	}
 
 	return (
-		<Link to='/favorites' className={styles.search}>
-			<IoMdHeart  className={styles.icon}/>
-			<span>{quantity ? quantity : ''}</span>
-
-			{/* {open && (
+		<div className={styles.search}>
+			{open && (
 				<input
 					type='text'
 					placeholder='Search movie'
 					value={title}
-					onChange={e => setTitle(e.target.value)}
+					onChange={handleChange}
 				/>
 			)}
+			{title && open ? (
+				<div className={styles.outputFilms}>
+					{items.length ? (
+						<ul className={styles.items}>
+							{items.map(item => (
+								<Link
+									to={`/${item.type}/${item.slug}/${item.id}`}
+									className={styles.item}
+									key={item.id}
+								>
+									<div className={styles.movie} onClick={itemClickHandler}>
+										<img src={item.poster} alt={item.title} />
+										<h4>{item.title}</h4>
+									</div>
+								</Link>
+							))}
+						</ul>
+					) : (
+						'No results'
+					)}
+				</div>
+			) : null}
+
 			<FaSearch
 				size={28}
-				onClick={() => setOpen(prev => !prev)}
 				cursor='pointer'
-			/> */}
-		</Link>
+				onClick={() => setOpen(prev => !prev)}
+			/>
+		</div>
 	)
 }
 

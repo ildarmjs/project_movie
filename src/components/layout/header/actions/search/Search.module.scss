@@ -1,43 +1,75 @@
 .search {
-	color: #fff;
+	position: relative;
 	display: flex;
 	align-items: center;
-	position: relative;
-	.icon {
-		font-size: 45px;
-		@media (max-width: 767px) {
-			font-size: 30px;
-			margin-right: 10px;
+	input {
+		font-size: 20px;
+		color: #fff;
+		background: transparent;
+		outline: none;
+		border-bottom: 1px solid #7a6fff;
+		@media (max-width: 992px) {
+			width: 150px;
 		}
 	}
-	span {
+	.outputFilms {
+		padding: 20px;
 		position: absolute;
-		right: 40%;
-		top: 30%;
-		color: #7a6fff;
-		font-size: 18px;
-		font-weight: bold;
+		z-index: 1000;
+		left: 0;
+		top: 60px;
+		background: #423b91;
+		width: 600px;
+		// min-width: 600px;
+		// width: 100%;
+		height: auto;
+		border-radius: 10px;
 		@media (max-width: 767px) {
-			top: 7px;
-			right: 20px;
-			font-size: 16px;
+			// min-width: 0;
+			// width: 100%;
+			width: 400px;
+			left: -97%;
+			// width: 400px;
+			// max-width: 100%;
+			// right: -300px;
+			height: 300px;
+			overflow: hidden;
+			overflow-y: scroll;
+		}
+		@media (max-width: 479px) {
+			// min-width: 0;
+			// width: 100%;
+			width: 300px;
+			left: -10%;
+			// width: 400px;
+			// max-width: 100%;
+			// right: -300px;
+			height: 300px;
+			overflow: hidden;
+			overflow-y: scroll;
+		}
+		.items {
+			// display: flex;
+			.item {
+				display: block;
+				color: #fff;
+				margin-bottom: 20px;
+				&:last-child {
+					margin: 0;
+				}
+				.movie {
+					display: flex;
+					align-items: center;
+					column-gap: 20px;
+
+					img {
+						width: 80px;
+					}
+					h4 {
+						font-size: 24px;
+					}
+				}
+			}
 		}
 	}
-	// input {
-	// 	font-size: 20px;
-	// 	color: #fff;
-	// 	background: transparent;
-	// 	outline: none;
-	// 	border-bottom: 1px solid #7a6fff;
-	// 	@media (max-width: 497px) {
-	// 		position: absolute;
-	// 		right: -50px;
-	// 		top: 50px;
-	// 		width: 275px;
-	// 	}
-	// }
-	// @media (max-width: 767px) {
-	// 	position: relative;
-	// 	right: 20px;
-	// }
 }

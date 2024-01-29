@@ -5,6 +5,7 @@ import { AuthContext } from '../../../../utils/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import Search from './search/Search'
 import { MdAccountCircle } from 'react-icons/md'
+import Favorite from './favorite/Favorite'
 
 const Actions = () => {
 	const { user, setUser } = useContext(AuthContext)
@@ -21,6 +22,7 @@ const Actions = () => {
 	return (
 		<div className={styles.actions}>
 			<Search />
+			<Favorite />
 			<Button text={'Try 30 days for free'} />
 
 			{user.email.length ? (

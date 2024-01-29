@@ -12,9 +12,9 @@ export const MoviesService = {
 			`${import.meta.env.VITE_BASE_URL}/${category}?genres.slug=${slug}`
 		)
 	},
-	async searchMovie(title) {
+	async searchMovie(title = '') {
 		return await axios.get(
-			`${import.meta.env.VITE_BASE_URL}/movies?title=*${title}`
+			`${import.meta.env.VITE_BASE_URL}/all-films?title=*${title}`
 		)
 	},
 	async getSerialsPaginationAndSorting(
