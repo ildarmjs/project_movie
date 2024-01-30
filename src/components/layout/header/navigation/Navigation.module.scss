@@ -2,6 +2,7 @@
 	.list {
 		display: flex;
 		align-items: center;
+		flex-wrap: wrap;
 		@media (max-width: 767px) {
 			display: block;
 		}
@@ -13,12 +14,17 @@
 			@media (max-width: 767px) {
 				margin: 0 0 15px 0;
 			}
-			> a {
+			.link,
+			a {
 				color: #fff;
 				font-size: 20px;
+
 				&:hover {
 					color: #7a6fff;
 				}
+			}
+			.linkActive {
+				color: #7a6fff;
 			}
 		}
 	}

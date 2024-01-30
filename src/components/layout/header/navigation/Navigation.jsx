@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Navigation.module.scss'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Navigation = () => {
 	return (
@@ -8,13 +8,34 @@ const Navigation = () => {
 			<nav>
 				<ul className={styles.list}>
 					<li>
-						<Link to='/serials'>Serials</Link>
+						<NavLink
+							to='/serials'
+							className={({ isActive }) =>
+								isActive ? styles.linkActive : styles.link
+							}
+						>
+							Serials
+						</NavLink>
 					</li>
 					<li>
-						<Link to='/movies'>Movies</Link>
+						<NavLink
+							to='/movies'
+							className={({ isActive }) =>
+								isActive ? styles.linkActive : styles.link
+							}
+						>
+							Movies
+						</NavLink>
 					</li>
 					<li>
-						<Link to='/cartoons'>Cartoons</Link>
+						<NavLink
+							to='/cartoons'
+							className={({ isActive }) =>
+								isActive ? styles.linkActive : styles.link
+							}
+						>
+							Cartoons
+						</NavLink>
 					</li>
 				</ul>
 			</nav>

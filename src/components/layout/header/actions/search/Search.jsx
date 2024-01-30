@@ -28,6 +28,7 @@ const Search = () => {
 	}
 	const itemClickHandler = () => {
 		setOpen(!open)
+		setTitle('')
 	}
 
 	return (
@@ -51,7 +52,10 @@ const Search = () => {
 									key={item.id}
 								>
 									<div className={styles.movie} onClick={itemClickHandler}>
-										<img src={item.poster} alt={item.title} />
+										<div className={styles.poster}>
+											<img src={item.poster} alt={item.title} />
+										</div>
+
 										<h4>{item.title}</h4>
 									</div>
 								</Link>

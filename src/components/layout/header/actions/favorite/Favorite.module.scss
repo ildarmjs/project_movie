@@ -22,3 +22,11 @@
 		}
 	}
 }
+.favoriteActive {
+	font-size: 40px;
+	color: #7a6fff;
+	@media (max-width: 767px) {
+		font-size: 30px;
+		margin-right: 10px;
+	}
+}
