@@ -93,8 +93,8 @@ const Register = () => {
 								{...register('email', {
 									required: 'Вы не ввели email',
 									pattern: {
-										value: /^\S+@\S+\.\S+$/g,
-										message: 'email введён не корректно'
+										value: /^\S+@\S+\.[com]+$/g,
+										message: 'email должен содержать домен .com'
 									}
 								})}
 							/>
